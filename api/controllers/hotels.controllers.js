@@ -1,9 +1,15 @@
 /**
  * Created by Giuseppe on 02/05/2017.
  */
+var dbconn = require('../data/dbconnection.js');
 var hotelData = require('../data/hotel-data.json');
 
 module.exports.hotelsGetAll = function (req, res) {
+    
+    //connessione al database
+    var db = dbconn.get();
+    console.log("db", db);
+    
     console.log("GET Hotels");
     console.log(req.query);
 

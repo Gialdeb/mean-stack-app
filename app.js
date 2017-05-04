@@ -1,7 +1,9 @@
 /**
  * Created by Giuseppe on 01/05/2017.
  */
-// console.log("funziona!");
+
+// Aggiungo la connessione al MongoDB
+require ('./api/data/dbconnection.js').open();
 
 var express = require('express');
 var app = express();
