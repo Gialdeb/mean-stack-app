@@ -5,4 +5,4 @@ Questa applicazione è stata creata per prendere confidenza con le seguenti tecn
 M = MongoDB -
 E = ExpressDB -
 A = AngualarJS -
-N = NodeJS"
+N = NodeJS
