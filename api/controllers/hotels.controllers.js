@@ -57,10 +57,29 @@ module.exports.hotelsGetOne = function (req, res) {
 
 
 module.exports.hotelsAddOne = function (req, res) {
-    console.log("post nuovo Hotel");
-    console.log(req.body);
+    var db = dbconn.get();
+    var collection = db.collection('hotels');
+    var newHotel;
 
-    res
-        .status(200)
-        .json(req.body);
+    console.log("POST nuovo Hotel");
+
+
+
+    if(req.body && req.body.name && req.body.stars){
+        newHotel = req.body;
+        newHotel.stars = parseInt(req.body.stars, 10);
+        console.log(newHotel);
+        collection.insertOne(newHotel, function (err, response) {
+            console.log(response);
+            console.log(response.ops);
+            res
+                .status(201)
+                .json(response.ops);
+        });
+    } else {
+        console.log("Errore dati non inseriti nel body");
+        res
+            .status(400)
+            .json({"messaggio" : "Richiede l'inserimento di dati nel body"});
+    }
 };
